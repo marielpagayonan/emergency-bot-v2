@@ -4,7 +4,6 @@ import google.generativeai as genai
 st.set_page_config(page_title="Emergency AI Assistant", page_icon="🚑")
 st.title("🚑 Emergency AI Assistant")
 
-# Sidebar for API Key
 with st.sidebar:
     st.header("Settings")
     api_key = st.text_input("Enter Gemini API Key", type="password")
@@ -13,8 +12,8 @@ with st.sidebar:
 if api_key:
     try:
         genai.configure(api_key=api_key)
-        # Using the universal flash model
-       model = genai.GenerativeModel('gemini-1.5-flash-latest')
+        # Using the absolute full path name to avoid the 404 error
+        model = genai.GenerativeModel('models/gemini-1.5-flash')
         
         if "messages" not in st.session_state:
             st.session_state.messages = []
